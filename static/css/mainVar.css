@@ -1,0 +1,68 @@
+/*-------tooltip------*/
+.tooltip {
+    position: relative;
+    width: 100%;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 50%;
+    color: #f00;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    background-color: aqua;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    /*left: 50%;*/
+    margin-left: 10px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: -13%;
+    right: 50%;
+    margin-top: -5px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent  aqua transparent;
+  }
+  
+  /*------loading----------*/
+  
+  img.loading {
+    width: 25vh;
+    animation: loading 3s infinite;
+    animation-timing-function: linear;
+  }
+  
+  div.loading {
+    text-align: center;
+    background-color: #2b2b3187;
+    width: 100%;
+    padding: 3em;
+  }
+  
+  @keyframes loading {
+    0% {transform: rotate(360deg);}
+    100% {transform: rotate(0deg);}
+  }
+/*------------duck-out--------------*/
+
+.duck-out {
+  animation: bottom 1s both;
+}
+
+@keyframes bottom {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}

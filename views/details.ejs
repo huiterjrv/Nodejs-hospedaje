@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/a8325daa67.js" crossorigin="anonymous"></script>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.mySlides {display: none}
+</style>
+<body class="w3-content w3-border-left w3-border-right w3-light-grey">
+
+  <a href="/" class="w3-button w3-green w3-third" style="position:fixed;width:10%;left:0;">home</a>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div id="gallery" class="w3-main w3-white">
+
+  <!-- Slideshow Header -->
+  <div class="w3-container" id="apartment">
+    <h2 class="w3-text-green"><%=obj.titel%></h2>
+<% for (let i = 0; i < obj.images.length; i++) {%>
+  
+  <div class="w3-display-container mySlides">
+    <img src="<%= obj.images[i].uri %>" style="width:100%;margin-bottom:-6px;height:100%;">
+      <div class="w3-display-bottomleft w3-container w3-black">
+        <p><%= obj.images[i].description %></p>
+      </div>
+  </div>
+
+<% } %> 
+    
+  </div>
+  <div class="w3-row-padding w3-section">
+<% for (let i = 0; i < obj.images.length; i++) {%>
+        <div class="w3-col s3">
+          <img class="demo w3-opacity w3-hover-opacity-off" src="<%= obj.images[i].uri %>" style="width:100%;cursor:pointer;" onclick="currentDiv(<%=i+1%>)" title="<%= obj.images[i].description %>">
+        </div>
+<%if (obj.images[i].isMainPhoto) {%>
+    <input type="hidden" name="<%= obj.price %>" value="<%=i+1%>">
+<%}}%>
+<% if(obj.images.length <= 3){%>
+<% for (let i = 0; i < (4-obj.images.length); i++) {%> 
+      <div class="w3-col s3">
+          <img class="w3-opacity w3-hover-opacity-off" style="width:100%;cursor:pointer;" src="/img/image.png" alt="img">
+      </div>
+<% }} %> 
+    
+  </div>
+
+  <div class="w3-container">
+    <h4><strong>The space</strong></h4>
+    <div class="w3-row w3-large">
+      <div class="w3-col s6">
+<% for (let i = 0; i < obj.beds.length; i++) {%>
+        <p><i class="fa fa-fw fa-bed"></i> Bedrooms <%= obj.beds[i].type %>: <%= obj.beds[i].beds %></p>
+<% } %>
+      </div>
+      <div class="w3-col s6">
+<% if(obj.occupancy != null){%>
+        <p><i class="fa fa-fw fa-male"></i> Max people: <%= obj.occupancy %></p>
+<%} if(obj.bathRooms != null){%>
+        <p><i class="fa fa-fw fa-bath"></i> Bathrooms: <%= obj.bathRooms %></p>
+<%}%>
+      </div>
+    </div>
+    <hr>
+
+    <h4><strong>Location</strong></h4>
+    <div class="w3-row w3-large">
+      <div class="w3-col s6">
+<% if(obj.location.province != null){%>
+        <p><i class="fa fa-fw fa-globe"></i> Province: <%= obj.location.province %></p>
+<%} if(obj.location.city != null){%>
+        <p><i class="fa fa-fw fa-university"></i> City: <%= obj.location.city %></p>
+<%} if(obj.location.gps[0] != null){%>
+        <p><i class="fa fa-fw fa-map-marker"></i> GPS coordinates: Latitude<%= obj.location.gps[0] %> Longitud <%= obj.location.gps[1] %></p>
+<%}%>
+      </div>
+      <div class="w3-col s6">
+<% if(obj.apartmentSize != null){%>
+        <p><i class="fa fa-fw fa-calculator"></i> Surface: <%= obj.apartmentSize %>m<sup>2</sup></p>
+<%} if(obj.price != null){%>
+        <p><i class="fa fa-fw fa-money"></i> price per day: <i class="fa fa-eur"></i><%= obj.price %></p>
+<%}%>
+      </div>
+    </div>
+    <hr>
+
+    <h4><strong>Rules Tags</strong></h4>
+    <div class="w3-row w3-large">
+      <div class="w3-col s6">
+<% if(obj.rulesTags.smoking){%>
+        <p><i class="fas fa-fw fa-smoking-ban"></i> Smoking</p>
+<%} if(obj.rulesTags.pets){%>
+        <p><i class="fa fa-fw fa-paw"></i> Pets</p>
+<%} if(obj.rulesTags.eat){%>
+        <p><i class="fa fa-fw fa-cookie-bite"></i> Eat</p>
+<%} if(obj.rulesTags.steal){%>
+        <p><i class="fa fa-fw fa-user-secret"></i> Steal</p>
+<%}%>
+      </div>
+      <div class="w3-col s6">
+<%if(obj.rulesTags.parties){%>
+        <p><i class="fa fa-fw fa-glass-cheers"></i> Parties</p>
+<%} if(obj.rulesTags.kids){%>
+        <p><i class="fa fa-fw fa-child"></i> Kids</p>
+<%} if(obj.rulesTags.arrivals){%>
+        <p><i class="fa fa-fw fa-clock-o"></i> Arrivals</p>
+<%}%>
+      </div>
+    </div>
+    <hr>
+    
+    <h4><strong>Amenities</strong></h4>
+    <div class="w3-row w3-large">
+      <div class="w3-col s6">
+<%if(obj.services.AC){%>
+        <p><i class="fa fa-fw fa-shower"></i> Shower</p>
+<%} if(obj.services.wifi){%>
+        <p><i class="fa fa-fw fa-wifi"></i> WiFi</p>
+<%} if(obj.services.TV){%>
+        <p><i class="fa fa-fw fa-tv"></i> TV</p>
+<%}%>
+      </div>
+      <div class="w3-col s6">
+<%if(obj.services.kitchen){%>
+        <p><i class="fas fa-fw fa-utensils"></i> Kitchen</p>
+<%} if(obj.services.heating){%>
+        <p><i class="fa fa-fw fa-thermometer"></i> Heating</p>
+<%} if(obj.services.reducedMobility){%>
+        <p><i class="fa fa-fw fa-wheelchair"></i> Accessible</p>
+<%}%>
+      </div>
+    </div>
+    <hr>
+    
+    <h4><strong>Extra Info</strong></h4>
+    <p><%= obj.description%></p>
+    <p>We accept: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
+    <hr>
+    
+    <h4><strong>Rules</strong></h4>
+    <p><%= obj.rulesDescription%></p>
+    <hr>
+
+<% if(obj.reservations.length > 0) {%> 
+    <h4><strong>Bookings</strong></h4>
+    <table class="w3-table w3-bordered w3-hoverable w3-center" style="width: 50%;">
+      <thead>
+          <tr>
+              <th>In</th>
+              <th>Out</th>
+          </tr>
+      </thead>
+
+<% for (let i = 0; i < obj.reservations.length; i++) {%> 
+          <tr>
+            <td><%=new Date(obj.reservations[i].start).toLocaleDateString() %></td>
+            <td><%=new Date(obj.reservations[i].end).toLocaleDateString() %></td>
+          </tr>
+  
+<%}%> 
+    </table>
+<%}%> 
+    
+  </div>
+  <div id="divMensaje" class="w3-panel w3-red w3-leftbar w3-padding-32" style="display: none;">
+      <h6 id="mensaje"><i class="fa fa-info w3-deep-orange w3-padding w3-margin-right"></i><!-- mensaje--></h6>
+  </div>
+  <hr>
+  
+  <footer class="w3-container w3-padding-16" style="margin-top:32px">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></footer>
+
+
+<!-- End page content -->
+</div>
+
+<!-- Subscribe Modal -->
+<div id="subscribe" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom w3-padding-large">
+    <div class="w3-container w3-white w3-center">
+      <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-button w3-xlarge w3-right w3-transparent"></i>
+      <h2 class="w3-wide">SUBSCRIBE</h2>
+      <p>Join our mailing list to receive updates on available dates and special offers.</p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+      <button type="button" class="w3-button w3-padding-large w3-green w3-margin-bottom" onclick="document.getElementById('subscribe').style.display='none'">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  
+// Slideshow Apartment Images
+let slideIndex = document.querySelector(`input[type='hidden']`).value;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  let i;
+  let x = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  x[slideIndex-1].style.height = "25em";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+
+/*----------LOG-------*/
+
+if (sessionStorage.getItem("USER")) {
+  let USER = sessionStorage.getItem("USER");
+  //acer una llamada AJAX para ra recervar
+} else {
+  document.querySelector('button').disabled=true;
+  document.querySelector('#divMensaje').style.display = 'block'
+  document.querySelector('#mensaje').textContent = 'To be able to book you have to be logged in'
+}
+
+
+</script>
+
+</body>
+</html>

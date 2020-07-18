@@ -1,0 +1,27 @@
+<div class="w3-container" style="margin: auto; width: 70%">
+    <h2>Users Table</h2>
+    <p>List of users of our website:</p>
+
+    <table class="w3-table w3-bordered w3-hoverable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Rool</th>
+            </tr>
+        </thead>
+<% for (let i = 0; i < obj.length; i++) {%>
+    <% if (obj[i].status){%> 
+        <tr>
+    <% }else{ %> 
+        <tr class="w3-deep-orange w3-hover-red">
+    <% } %> 
+            <td><%= obj[i].name %></td>
+            <td><%= obj[i].email %></td>
+            <td><%= obj[i].rool %></td>
+        </tr>
+<% } %> 
+    </table>
+    <p class="w3-button" onclick="users()">Modify</p>
+</div>
+

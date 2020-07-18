@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <script src="https://kit.fontawesome.com/a8325daa67.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/mainVar.css">
+  <style>
+  body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+  #gallery {min-height: 25em;}
+  </style>
+</head>
+
+<body class="w3-light-grey w3-content">
+
+<!-- Navigation Bar -->
+<div id="nav" class="w3-bar w3-white w3-large">
+  <a href="#" class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-bed w3-margin-right"></i>Logo</a>
+  <a href="#rooms" class="w3-bar-item w3-button w3-mobile">Rooms</a>
+  <a href="#about" class="w3-bar-item w3-button w3-mobile">About</a>
+  <a id="hybrid" href="#contact" class="w3-bar-item w3-button w3-mobile">Sign in</a>
+  <input id="inputUSER" type="hidden" name="USER" data-locality="index"
+  <% if(status){ %> 
+   data-USER="<%= JSON.stringify(user) %>">
+<% if(user.rool == 'admin'){ %> 
+  <a id="log" href="/admin?name=<%=user.name%>&_id=<%=user._id%>" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile"><%=user.name%></a>
+<% }else{ %> 
+  <a id="log" href="#JJAJAJAJAXD" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile"><%=user.name%></a>
+<% }}else{ %> 
+  >
+  <a id="log" href="#login" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Login Now</a>
+<% } %> 
+</div>
+<!-- Header -->
+<header class="w3-display-container w3-content" style="max-width:1500px;">
+  <img class="w3-image" src="img/fondo.jpg" alt="The Hotel" style="height:800px" width="1500" height="800">
+  <div class="w3-display-left w3-padding w3-col l6 m8">
+    <div class="w3-container w3-red">
+      <h2><i class="fa fa-bed w3-margin-right"></i>Hotel Name</h2>
+    </div>
+    <div class="w3-container w3-white w3-padding-16">
+      <form action="/apartment">
+        <div class="w3-row-padding" style="margin:0 -16px;">
+          <div class="w3-half w3-margin-bottom">
+            <label><i class="fa fa-calendar-o"></i> Check In</label>
+            <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY" name="start" min="">
+          </div>
+          <div class="w3-half">
+            <label><i class="fa fa-calendar-o"></i> Check Out</label>
+            <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY" name="end" min="">
+          </div>
+        </div>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+          <div class="w3-half w3-margin-bottom">
+            <label><i class="fa fa-fw fa-university"></i> City</label>
+            <input class="w3-input w3-border" type="text" name="city">
+          </div>
+          <div class="w3-half">
+            <label><i class="fa fa-fw fa-male"></i> People</label>
+          <input class="w3-input w3-border" type="text" name="people">
+          </div>
+        </div>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+          <div class="w3-half w3-margin-bottom">
+            <label><i class="fa fa-fw fa-globe"></i> Province</label>
+            <input class="w3-input w3-border" type="text" name="province">
+          </div>
+        </div>
+        <button class="w3-button w3-dark-grey" type="submit"><i class="fa fa-search w3-margin-right"></i> Search availability</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1532px;">
+
+  <div class="w3-container w3-margin-top" id="rooms">
+    <h3>Rooms</h3>
+    <p>Make yourself at home is our slogan. We offer the best beds in the industry. Sleep well and rest well.</p>
+  </div>
+  
+
+  <div id='AJAX' class="w3-row-padding w3-padding-16">
+  
+    <!-- //AJAX -->
+
+  </div>
+
+  <div class="w3-row-padding" id="about">
+    <div class="w3-col l4 12">
+      <h3>About</h3>
+      <h6>Our hotel is one of a kind. It is truely amazing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h6>
+    <p>We accept: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
+    </div>
+    <div class="w3-col l8 12">
+      <!-- Image of location/map -->
+      <img src="img/map.jpg" class="w3-image w3-greyscale" style="width:100%;">
+    </div>
+  </div>
+  
+  <div class="w3-row-padding w3-large w3-center" style="margin:32px 0">
+    <div class="w3-third"><i class="fa fa-map-marker w3-text-red"></i> 423 Some adr, Chicago, US</div>
+    <div class="w3-third"><i class="fa fa-phone w3-text-red"></i> Phone: +00 151515</div>
+    <div class="w3-third"><i class="fa fa-envelope w3-text-red"></i> Email: mail@mail.com</div>
+  </div>
+
+  <div class="w3-container">
+    <h3>Our Hotels</h3>
+    <h6>You can find our hotels anywhere in the world:</h6>
+  </div>
+  
+  <div class="w3-row-padding w3-padding-16 w3-text-white w3-large">
+    <div class="w3-half w3-margin-bottom">
+      <div class="w3-display-container">
+        <img src="img/Viella.jpg" alt="Cinque Terre" style="width:100%">
+        <span class="w3-display-bottomleft w3-padding">Viella</span>
+      </div>
+    </div>
+    <div class="w3-half">
+      <div class="w3-row-padding" style="margin:0 -16px">
+        <div class="w3-half w3-margin-bottom">
+          <div class="w3-display-container">
+            <img src="img/Barcelona.jpg" alt="New York" style="width:100%">
+            <span class="w3-display-bottomleft w3-padding">Barcelona</span>
+          </div>
+        </div>
+        <div class="w3-half w3-margin-bottom">
+          <div class="w3-display-container">
+            <img src="img/CostaBrava.jpg" alt="San Francisco" style="width:100%">
+            <span class="w3-display-bottomleft w3-padding">Costa Brava</span>
+          </div>
+        </div>
+      </div>
+      <div class="w3-row-padding" style="margin:0 -16px">
+        <div class="w3-half w3-margin-bottom">
+          <div class="w3-display-container">
+            <img src="img/Girona.jpg" alt="Pisa" style="width:100%">
+            <span class="w3-display-bottomleft w3-padding">Girona</span>
+          </div>
+        </div>
+        <div class="w3-half w3-margin-bottom">
+          <div class="w3-display-container">
+            <img src="img/Tarragona.jpg" alt="Paris" style="width:100%">
+            <span class="w3-display-bottomleft w3-padding">Tarragona</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="login" class="w3-container w3-padding-32 w3-black w3-opacity w3-card w3-hover-opacity-off" style="margin:32px 0;">
+    <form action="/" method="POST">
+      <h2>Get the best offers first!</h2>
+      <p>Get in our Web page.</p>
+      <label>User</label>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="loginEmail" required></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="password" placeholder="Password" required name="loginPassword" required></p>
+      <button type="submit" class="w3-button w3-red w3-margin-top">LOG IN</button>
+    </form>
+    <div class="w3-panel w3-red w3-leftbar w3-padding-32" style="display: none;">
+      <h6><i class="fa fa-info w3-deep-orange w3-padding w3-margin-right"></i><!-- mensaje--></h6>
+    </div>
+  <% if(err != '') {%> 
+    <div class="w3-panel w3-red w3-leftbar w3-padding-32">
+      <h6><i class="fa fa-info w3-deep-orange w3-padding w3-margin-right"></i><%= err %> </h6>
+    </div>
+  <% } %>
+  </div>
+
+  <div class="w3-container" id="contact">
+    <h2>Register</h2>
+    <p>Join our Web page.</p>
+    <form action="/" method="POST">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="name" required></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="email" placeholder="Email" required name="email" required></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="password" placeholder="Password" required name="password" required></p>
+      <label for="admin">Manager</label><input type="checkbox" name="rool" id="admin" style="margin: 0 1em;" value="manager" onclick="checkbox(this)">
+      <label for="visiting">Visiting</label><input type="checkbox" name="rool" id="visiting" style="margin: 0 1em;" value="visiting" onclick="checkbox(this)">
+      <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND SUBSCRIPTION</button></p>
+    </form>
+    <div class="w3-panel w3-red w3-leftbar w3-padding-32" style="display: none;">
+      <h6><i class="fa fa-info w3-deep-orange w3-padding w3-margin-right"></i><!-- mensaje--></h6>
+    </div>
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+  <h5>Find Us On</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<!-- Add Google Maps -->
+<script src="/js/AJAX.js"></script>
+<script src="/js/storage.js"></script>
+<script>
+
+function checkbox(x) {
+
+  let checkbox = document.querySelectorAll('input[type=checkbox]');
+  (x.value == checkbox[0].value)? checkbox[1].checked = false : checkbox[0].checked = false;
+ 
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+ let input = document.querySelectorAll('form input[type=date]');
+ input[0].min = formatDate(new Date());
+ input[1].min = formatDate(new Date());
+
+ajaxPOST('/AJAX/users','var=Hoooo!!&var1=hello&location=index','GetUser');//running AJAX
+ajaxPOST('http://localhost:3000/AJAX','var=Hoooo!!&var1=hello&location=index','index');//running AJAX
+</script>
+
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+</body>
+</html>

@@ -1,0 +1,59 @@
+/*-----ADD-NEW & ADD-DETAILS------*/
+label {
+  display: block;
+  margin: 1em 0;
+}
+
+.s3 {
+  border: #999 1px solid;
+}
+
+input[type="number"]{
+  width: 2.5em;
+}
+
+.demo{
+  background: url(/img/image.png) center/cover no-repeat;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.demo input {background-color: #5550;}
+#province, #city{
+  display: inline;
+  width: 50%;
+}
+
+/*-------tooltip------*/
+.tooltip {
+  position: relative;
+  width: 100%;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 50%;
+  color: #f00;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  background-color: aqua;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  /*left: 50%;*/
+  margin-left: 10px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: -13%;
+  right: 50%;
+  margin-top: -5px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent  aqua transparent;
+}

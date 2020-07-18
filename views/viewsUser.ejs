@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/a8325daa67.js" crossorigin="anonymous"></script>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.mySlides {display: none}
+</style>
+<body class="w3-content w3-border-left w3-border-right w3-light-grey">
+
+  <a href="/" class="w3-button w3-green w3-third" style="position:fixed;width:10%;left:0;">home</a>
+
+  <div class="w3-content" style="width:50%;"> 
+    
+    <h4><strong>Bookings</strong></h4>
+    <table class="w3-table w3-bordered w3-hoverable w3-center">
+      <thead>
+          <tr>
+              <th>In</th>
+              <th>Out</th>
+              <th>Name</th>
+          </tr>
+      </thead>
+    <% if(obj.length > 0) {%> 
+<% for (let i = 0; i < obj.length; i++) {%> 
+<% for (let I = 0; I < obj[i].reservations.length; I++) {%> 
+          <tr>
+            <td><%=new Date(obj[i].reservations[I].start).toLocaleDateString() %></td>
+            <td><%=new Date(obj[i].reservations[I].end).toLocaleDateString() %></td>
+            <td><a href="/apartment/<%=obj[i]._id %>"><%=obj[i].titel  %></a></td>
+          </tr>
+  
+        <%}}}%> 
+    </table>
+  
+  </div>
+   
+</body>
+</html>

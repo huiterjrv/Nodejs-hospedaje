@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <script src="https://kit.fontawesome.com/a8325daa67.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/mainForm.css">
+<link rel="stylesheet" href="/css/mainVar.css">
+  <style>
+  body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+ 
+  .mySlides {display: none;height: 30em;}
+.demo{
+  background: url(/img/image.png) center/cover no-repeat;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.demo input {background-color: #5550;}
+#province, #city{
+  display: inline;
+  width: 50%;
+}
+input[name=gps] {
+  width: 40%;
+}
+  </style>
+</head>
+
+<body class="w3-content w3-border-left w3-border-right w3-light-grey">
+
+    <input id="id" type="hidden" name="idUser" value="<%= obj['_id'] %>">
+
+    <div id="AJAX" class="w3-main w3-white">
+        
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main w3-container" style="width: 80%; margin: auto;">
+            <input type="hidden" name="img"> 
+            <!-- Push down content on small screens -->
+            <div class="w3-hide-large" style="margin-top:80px"></div>
+        
+            <!-- Slideshow Header -->
+            <div class="w3-container" id="apartment">
+            <label for="title"><h2 class="w3-text-green">The Apartment</h2></label>
+            <input class="w3-input w3-border w3-round-large w3-hover-teal" type="text" id="title" name="titel" placeholder="A title to attract customer attention">
+            <div class="w3-display-container viewImg" style="height: 30em;">
+                <img src="/img/image.png" style="width:100%;height: 100%;margin-bottom:-6px;">
+                <div class="w3-display-bottomleft w3-container w3-black">
+                <p>Title</p>
+                </div>
+            </div>
+            </div>
+            <div class="w3-row-padding w3-section" style="height: 15em;">
+            <div class="w3-col s3 demo w3-opacity w3-hover-opacity-off" onclick="currentDiv(1)">
+                <div class="tooltip">
+                <input class="w3-input w3-border w3-round-large w3-hover-light-green" type="text" name="uri" placeholder="Photographs of the apartment">
+                <span class="tooltiptext">*porfavor rellenar</span>
+                </div>
+                <div class="tooltip">
+                    <input class="w3-input w3-border w3-round-large w3-hover-light-green" type="text" name="descript" placeholder="specify what it belongs to">
+                    <span class="tooltiptext">*porfavor rellenar</span>
+                </div>
+            </div>
+            <div class="w3-col s3 demo w3-opacity w3-hover-opacity-off" onclick="currentDiv(2)">
+                <div class="tooltip">
+                <input class="w3-input w3-border w3-round-large w3-hover-light-green" type="text" name="uri" placeholder="Photographs of the apartment">
+                <span class="tooltiptext">*porfavor rellenar</span>
+                </div>
+                <div class="tooltip">
+                    <input class="w3-input w3-border w3-round-large w3-hover-light-green" type="text" name="descript" placeholder="specify what it belongs to">
+                    <span class="tooltiptext">*porfavor rellenar</span>
+                </div>
+            </div>
+            <div class="w3-col s3 demo w3-opacity w3-hover-opacity-off" onclick="currentDiv(3)">
+                <div class="tooltip">
+                <input class="w3-input w3-border w3-round-large w3-hover-light-green" type="text" name="uri" placeholder="Photographs of the apartment">
+                <span class="tooltiptext">*porfavor rellenar</span>
+                </div>
+                <div class="tooltip">
+                    <input class="w3-input w3-border w3-round-large w3-hover-light-green" type="text" name="descript" placeholder="specify what it belongs to">
+                    <span class="tooltiptext">*porfavor rellenar</span>
+                </div>
+            </div>
+            <div class="w3-col s3 demo w3-opacity w3-hover-opacity-off" onclick="currentDiv(4)">
+                <div class="tooltip">
+                <input class="w3-input w3-border w3-round-large w3-hover-light-green" type="text" name="uri" placeholder="Photographs of the apartment">
+                <span class="tooltiptext">*porfavor rellenar</span>
+                </div>
+                <div class="tooltip">
+                    <input class="w3-input w3-border w3-round-large w3-hover-light-green" type="text" name="descript" placeholder="specify what it belongs to">
+                    <span class="tooltiptext">*porfavor rellenar</span>
+                </div>
+            </div>
+            </div>
+        
+            <div class="w3-container">
+            <h4><strong>The space</strong></h4>
+            <div class="w3-row w3-large">
+                <div class="w3-col s6">
+                <label for="people"><i class="fa fa-fw fa-male"></i> Max people:<input type="number" name="occupancy" id="people" min="1"></label>
+                <label for="individual"><i class="fa fa-fw fa-bed"></i> individual:<input type="number" name="individual" id="individual" min="0"></label>
+                <label for="matrimonial"><i class="fa fa-fw fa-bed"></i> matrimonial:<input type="number" name="matrimonial" id="matrimonial" min="0"></label>
+                </div>
+                <div class="w3-col s6">
+                <label for="queen"><i class="fa fa-fw fa-bed"></i> queen size:<input type="number" name="queenSize" id="queen" min="0"></label>
+                <label for="king"><i class="fa fa-fw fa-bed"></i> king size:<input type="number" name="kingSize" id="king" min="0"></label>
+                <label for="Bathrooms"><i class="fa fa-fw fa-bath"></i> Bathrooms:<input type="number" name="Bathrooms" id="Bathrooms" min="0"></label>
+                </div>
+            </div>
+            <hr>
+        
+            <h4><strong>Location</strong></h4>
+            <div class="w3-row w3-large">
+                <div class="w3-col s6">
+                <label for="province"><i class="fa fa-fw fa-globe"></i> Province:<input class="w3-input w3-round-large" type="text" name="province" id="province" min="1"></label>
+                <label for="city"><i class="fa fa-fw fa-university"></i> City:<input class="w3-input w3-round-large" type="text" name="city" id="city" min="0"></label>
+                <label for="gps"><i class="fa fa-fw fa-map-marker"></i> GPS coordinates: <br> Latitude <input type="number" name="gps" id="gps"> <br> Longitud <input type="number" name="gps" id="gps" ></label>
+                </div>
+                <div class="w3-col s6">
+                <label for="size"><i class="fa fa-fw fa-calculator"></i> Surface:<input type="number" name="apartmentSize" id="size" min="0">m<sup>2</sup></label>
+                <label for="price"><i class="fa fa-fw fa-money"></i> price per day: <i class="fa fa-eur"></i><input type="number" name="price" id="price" min="0"></label>
+                </div>
+            </div>
+            <hr>
+            
+            <h4><strong>Rules Tags</strong></h4>
+            <div class="w3-row w3-large">
+                <div class="w3-col s6">
+                <label for="smoking"><i class=" fa-fw fas fa-smoking-ban"></i> Smoking <input type="checkbox" name="smoking" id="smoking"></label>
+                <label for="pets"><i class="fa fa-fw fa-paw"></i> Pets <input type="checkbox" name="pets" id="pets"></label>
+                <label for="eat"><i class="fas fa-fw fa-cookie-bite"></i> Eat <input type="checkbox" name="eat" id="eat"></labelp>
+                <label for="steal"><i class="fa fa-fw fa-user-secret"></i> Steal <input type="checkbox" name="steal" id="steal"></labelp>
+                </div>
+                <div class="w3-col s6">
+                <label for="parties"><i class="fas fa-fw fa-glass-cheers"></i> parties <input type="checkbox" name="parties" id="parties"></label>
+                <label for="kids"><i class="fa fa-fw fa-child"></i> Kids <input type="checkbox" name="kids" id="kids"></label>
+                <label for="arrivals"><i class="fa fa-fw fa-clock-o"></i> Arrivals <input type="checkbox" name="arrivals" id="arrivals"></label>
+                </div>
+            </div>
+            <hr>
+            
+            <h4><strong>Amenities</strong></h4>
+            <div class="w3-row w3-large">
+                <div class="w3-col s6">
+                <label for="AC"><i class="fa fa-fw fa-snowflake-o" aria-hidden="true"></i> Shower <input type="checkbox" name="AC" id="AC"></label>
+                <label for="wifi"><i class="fa fa-fw fa-wifi"></i> WiFi <input type="checkbox" name="wifi" id="wifi"></label>
+                <label for="TV"><i class="fa fa-fw fa-tv"></i> TV <input type="checkbox" name="TV" id="TV"></labelp>
+                </div>
+                <div class="w3-col s6">
+                <label for="kitchen"><i class="fas fa-fw fa-utensils"></i> Kitchen <input type="checkbox" name="kitchen" id="kitchen"></label>
+                <label for="heating"><i class="fa fa-fw fa-thermometer"></i> Heating <input type="checkbox" name="heating" id="heating"></label>
+                <label for="reducedMobility"><i class="fa fa-fw fa-wheelchair"></i> Accessible <input type="checkbox" name="reducedMobility" id="reducedMobility"></label>
+                </div>
+            </div>
+            <hr>
+            
+            <label for="description"></label><h4><strong>Extra Info</strong></h4></lable>
+            <textarea class="w3-input w3-round-large w3-hover-light-green"  name="description" id="description" placeholder="Description of the apartment"></textarea>
+            <hr>
+            <label for="rulesDescription"></label><h4><strong>Rules</strong></h4></lable>
+            <textarea class="w3-input w3-round-large w3-hover-light-green"  name="rulesDescription" id="rulesDescription" placeholder="Rules of use of the apartment"></textarea>
+            <p><button class="w3-button w3-green w3-third" onclick="document.getElementById('subscribe').style.display='block'">Subscribe</button></p>
+            </div>
+            <hr>
+            
+            <footer class="w3-container w3-padding-16" style="margin-top:32px">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></footer>
+        
+        <!-- End page content -->
+        </div>
+        
+        
+        <!-- Subscribe Modal -->
+        <div id="subscribe" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom w3-padding-large">
+            <div class="w3-container w3-white w3-center">
+                <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-button w3-xlarge w3-right w3-transparent"></i>
+                <h2 class="w3-wide">WAIT FOR THE ANSWER</h2>
+                <H3 id="RESPONSE"></H3>
+                
+                <button type="button" class="w3-button w3-padding-large w3-green w3-margin-bottom" onclick="openGetApart()">Subscribe</button>
+            </div>
+            </div>
+        </div>
+    <!-- End page content -->
+    </div>
+    <script>
+        if (!(sessionStorage.getItem("USER"))) {
+            window.location.href = '/locoNoInventes';
+        } else {
+            let login = sessionStorage.getItem("USER")
+            login = JSON.parse(login)
+            let input = document.querySelector('input[type=hidden]#id').value
+            if(login._id != input) {
+                window.location.href = '/locoNoInventes';
+            }
+        }
+    </script>
+    <script src="/js/add-new.js"></script>
+</body>
+</html>

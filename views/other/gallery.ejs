@@ -1,0 +1,65 @@
+<% if (search) { %> 
+<input id="inputLocality" type="hidden" data-locality="all" data-search="<%= search %>" data-in="<%= In %>" data-out="<%= out %>">
+<% } %> 
+<%if(x.length == 0 ) {%>
+  <h1><i class="fab fa-angellist "></i>There are no apartments with your search</h1>
+
+<%}%>
+
+<%
+    if (x != undefined ) {
+     let NUM = 0;
+     for (let i = 0; i < x.length; i++) {
+      let img = x[i].images.find(a => a.isMainPhoto == true);
+      if (x[i].status) {
+%> 
+
+    <div class="w3-third w3-margin-bottom">
+      <img src="<%= img.uri %>" alt="Norway" style="width:100%">
+      <div class="w3-container w3-white">
+        <h3><%=x[i].titel %></h3>
+        <h6 class="w3-opacity">From <i class="fa fa-eur" aria-hidden="true"></i><%= x[i].price %></h6>
+        <p><%=x[i].location.province %></p>
+        <p><%= x[i].apartmentSize %>m<sup>2</sup></p>
+        <p class="w3-large">
+        <% if (x[i].services.wifi) {%>
+          <i class="fa fa-fw fa-wifi" title="wifi"></i>
+        <%}else{%>
+          <i class="fa fa-fw fa-wifi w3-opacity" title="wifi"></i>
+        <%} if (x[i].services.heating) {%>
+          <i class="fa fa-fw fa-thermometer" title="heating"></i>
+        <%}else{%>
+          <i class="fa fa-fw fa-thermometer w3-opacity" title="heating"></i>
+        <%} if (x[i].services.reducedMobility) {%>
+          <i class="fa fa-fw fa-wheelchair" title="Reduced Mobility"></i>
+        <%}else{%>
+          <i class="fa fa-fw fa-wheelchair w3-opacity" title="Reduced Mobility"></i>
+        <%} if (x[i].services.TV) {%>
+          <i class="fa fa-fw fa-tv" title="TV"></i>
+        <%}else{%>
+          <i class="fa fa-fw fa-tv w3-opacity" title="TV"></i>
+        <%} if (x[i].services.kitchen) {%>
+          <i class="fas fa-fw fa-utensils" title="kitchen"></i>
+        <%}else{%>
+          <i class="fas fa-fw fa-utensils w3-opacity" title="kitchen"></i>
+        <%} if (x[i].services.AC) {%>
+          <i class="fa fa-fw fa-snowflake" title="AC"></i>
+        <%}else{%>
+          <i class="fa fa-fw fa-snowflake w3-opacity" title="AC"></i>
+        <%}%>
+        </p>
+        <% if(y == 'index'){ %>
+          <a href="/apartment/<%= x[i]._id %>" class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</a>
+        <%}else{%>
+          <p class="w3-button w3-block w3-black w3-margin-bottom" data-id="<%= x[i]._id %>">Choose Room</p>
+        <%}%>
+      </div>
+    </div>
+<%NUM++;
+ if (NUM == 3) {
+    if (y == 'index') {
+          break;
+    }
+  }
+  
+}}} %> 

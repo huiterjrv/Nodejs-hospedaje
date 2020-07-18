@@ -1,0 +1,52 @@
+<div class="w3-container" style="margin: auto; width: 70%">
+    <h2>Users Table</h2>
+    <p>List of users of our website:</p>
+
+    <table class="w3-table w3-bordered w3-hoverable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Rool</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+<% for (let i = 0; i < obj.length; i++) {%>
+    <% if (obj[i].status){%> 
+        <tr>
+    <% }else{ %> 
+        <tr class="w3-deep-orange w3-hover-red">
+    <% } %> 
+            <td>
+                <input class="w3-input w3-round-large w3-light-grey" type="text" name="name" value="<%= obj[i].name %>" required>
+            </td>
+            <td>
+                <input class="w3-input w3-round-large w3-light-grey" type="text" name="email" value="<%= obj[i].email %>" required>
+            </td>
+            <td>
+                <select class="w3-select w3-round-large w3-light-grey" name="rool" required>
+                    <option value="admin"<%= (obj[i].rool == 'admin')? ' selected readonly' :'';%>>ADMIN</option>
+                    <option value="visiting"<%= (obj[i].rool == 'visiting')? ' selected' :'';%>>VISITING</option>
+                    <option value="manager"<%= (obj[i].rool == 'manager')? ' selected' :'';%>>MANAGER</option>
+                </select>
+            </td>
+            <td>
+                <input type="checkbox" name="status" data-status="<%= obj[i].status %>" value="<%= obj[i]._id %>" <%= (obj[i].rool == 'admin')? 'readonly' :'';%>>
+            </td>
+        </tr>
+<% } %> 
+    </table>
+    <p class="w3-button" onclick="checkChange()">Upload Modifications</p>
+</div>
+ <!-- Subscribe Modal -->
+ <div id="subscribe" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom w3-padding-large">
+      <div class="w3-container w3-white w3-center">
+        <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-button w3-xlarge w3-right w3-transparent"></i>
+        <h2 class="w3-wide">WAIT FOR THE ANSWER</h2>
+        <H3 id="RESPONSE"></H3>
+        
+        <button type="button" class="w3-button w3-padding-large w3-green w3-margin-bottom" onclick="openUsers()">Ok</button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <script src="https://kit.fontawesome.com/a8325daa67.js" crossorigin="anonymous"></script>
+  <style>
+  body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+  .mySlides {display: none}
+  </style>
+</head>
+
+<body class="w3-content w3-border-left w3-border-right w3-light-grey">
+  <input id="inputUSER" type="hidden" name="USER" data-USER="" data-locality="all" data-search="<%= search %>">
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-light-grey w3-collapse w3-top" style="z-index:3;width:260px" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
+    <a href="/" class="w3-button w3-green w3-third" style="width:100%;">home</a>
+    <h3>Rental</h3>
+    <h3 id="price"></h3>
+    <h6>per night</h6>
+    <hr>
+    
+      <p><label><i class="fa fa-calendar-check-o"></i> Check In</label></p>
+      <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY" name="start">          
+      <p><label><i class="fa fa-calendar-o"></i> Check Out</label></p>
+      <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY" name="end">         
+      <p><label><i class="fa fa-university"></i> City</label></p>
+      <input class="w3-input w3-border" type="text" name="city" >              
+      <p><label><i class="fa fa-child"></i> Max People</label></p>
+      <input class="w3-input w3-border" type="text" name="people">
+      <p><button class="w3-button w3-block w3-green w3-left-align"><i class="fa fa-search w3-margin-right"></i> Search availability</button></p>
+
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+  <span class="w3-bar-item">Rental</span>
+  <a href="javascript:void(0)" class="w3-right w3-bar-item w3-button" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top: 3em"></div>
+<!-- !PAGE CONTENT! -->
+<div id="AJAX" class="w3-main w3-white" style="margin-left:260px">
+
+
+<!-- //AJAX -->
+<input type="hidden" id="inputAJAX" value="<%= JSON.stringify(x) %>" data-in="<%= In %>" data-out="<%= out %>">
+
+<!-- End page content -->
+</div>
+
+<!-- Subscribe Modal -->
+<div id="subscribe" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom w3-padding-large">
+    <div class="w3-container w3-white w3-center">
+      <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-button w3-xlarge w3-right w3-transparent"></i>
+      <h2 class="w3-wide">SUBSCRIBE</h2>
+      <p></p>
+      <button type="button" class="w3-button w3-padding-large w3-green w3-margin-bottom" onclick="document.getElementById('subscribe').style.display='none'">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Script to open and close sidebar when on tablets and phones
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+ let input = document.querySelectorAll('input[type=date]');
+ input[0].min = formatDate(new Date());
+ input[1].min = formatDate(new Date());
+
+
+/*----------LOG-------*/
+function USER () {
+
+  
+
+    let inputUser = document.querySelector('input[type=hidden]#inputUSER');
+
+  if (inputUser.dataset.search) {
+    if (inputUser.dataset.search == 'all') {
+      document.querySelector('button#buttonMensaje').disabled=true;
+      document.querySelector('#divMensaje').style.display = 'block'
+      document.querySelector('#mensaje').textContent = 'To book you have to put the dates in the search'
+    }
+  }
+
+  
+
+  if (sessionStorage.getItem("USER")) {
+    let USER = sessionStorage.getItem("USER");
+    //acer una llamada AJAX para ra recervar
+  } else {
+    document.querySelector('button#buttonMensaje').disabled=true;
+    document.querySelector('#divMensaje').style.display = 'block'
+    document.querySelector('#mensaje').textContent = 'To be able to book you have to be logged in'
+  }
+}
+</script>
+<script src="/js/AJAX.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/ajaxAll.js"></script>
+<script src="/js/storage.js"></script>
+
+</body>
+</html>

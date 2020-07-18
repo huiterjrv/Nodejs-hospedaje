@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<script src="https://kit.fontawesome.com/a8325daa67.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/mainForm.css">
+<link rel="stylesheet" href="/css/mainVar.css">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.mySlides {display: none;height: 30em;}
+.demo{
+  background: url(/img/image.png) center/cover no-repeat;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.demo input {background-color: #5550;}
+#province, #city{
+  display: inline;
+  width: 50%;
+}
+input[name=gps] {
+  width: 40%;
+}
+
+</style>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+  <input id="id" type="hidden" name="idUser" value="<%= obj['_id'] %>">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+  <h3 class="w3-padding-64 w3-center"><b><%=obj.name.toUpperCase()%></b></h3>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">APARTMENTS</a> 
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">USERS</a> 
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">NEW APARTMENTS</a>
+  <a href="/" class="w3-button w3-third" style="width:100%;">HOME</a>
+  
+  <div id="apart" class="w3-container w3-display-container  w3-animate-bottom" style="display: none; margin-top: 3em;">
+    <hr>
+  
+
+      <p><label><i class="fa fa-calendar-check-o"></i> Check In</label></p>
+      <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY" name="startLook" min="">          
+      <p><label><i class="fa fa-calendar-o"></i> Check Out</label></p>
+      <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY" name="endLook" min="">         
+      <p><label><i class="fa fa-university"></i> City</label></p>
+      <input class="w3-input w3-border" type="text" name="cityLook" >              
+      <p><label><i class="fa fa-globe"></i> Province</label></p>
+      <input class="w3-input w3-border" type="text" name="provinceLook">
+      <p><label><i class="fa fa-fw fa-male"></i> People</label></p>
+      <input class="w3-input w3-border" type="text" name="peopleLook">
+      <p class="w3-bar-item w3-button w3-padding-16" onclick="look()"><i class="fa fa-search w3-margin-right"></i> Search availability</p>
+
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
+  <span class="w3-left w3-padding">SOME NAME</span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">&#9776;</a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Push down content on small screens --> 
+<div class="w3-hide-large" style="margin-top:83px"></div>
+
+<!-- !PAGE CONTENT! -->
+<div id="AJAX" class="w3-main w3-container" style="margin-left:300px">
+<!-- !PAGE CONTENT! -->
+
+<!-- //AJAX -->
+
+<!-- End page content -->
+</div>
+<script src="/js/AJAX.js"></script>
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+//nav linck
+let navA = document.querySelectorAll('nav a');
+navA.forEach(element => {
+    if(element.textContent == 'APARTMENTS'){element.addEventListener('click',openGetApart)}
+    if(element.textContent == 'NEW APARTMENTS'){element.addEventListener('click',openNewApart)}
+    if(element.textContent == 'USERS'){element.addEventListener('click',openUsers)}
+});
+
+//------------USERS------------------------------------
+
+//AJSAX users
+function openUsers() {
+  let nodo = document.querySelector('div#apart');
+  nodo.classList.remove('w3-animate-bottom');
+  nodo.classList.add('duck-out');
+
+  ajaxPOST('/admin/users','','adminUsers','GET');
+}
+
+//AJSAX usersUp
+function users() {
+  ajaxPOST('/admin/users/update','','adminUsersUp','GET');
+}
+
+//----------------------APARTMENT------------------------------------------
+
+//AJAX new apartment
+function openNewApart() {
+  let nodo = document.querySelector('div#apart');
+  nodo.classList.remove('w3-animate-bottom');
+  nodo.classList.add('duck-out');
+
+  ajaxPOST('/admin/add-new','','adminNewApart','GET');
+
+}
+
+//AJAX New Apart
+function newApart(){
+
+  let textarea = document.querySelectorAll('textarea');
+  let messaje = textarea[0].name+'='+textarea[0].value+'&'+textarea[1].name+'='+textarea[1].value;
+  let inmput = document.querySelectorAll('input');
+  for (let i = 0; i < inmput.length; i++) {
+
+    if (inmput[i].type == 'checkbox') {
+      console.log(inmput[i]);
+      
+      messaje +='&'+inmput[i].name+'='+inmput[i].checked;
+    } else {
+      messaje +='&'+inmput[i].name+'='+inmput[i].value;
+    }
+
+  }
+
+  ajaxPOST('/admin/add-new',messaje,'adminApartNew');
+}
+
+//AJAX get apartments
+function openGetApart() {
+  let nodo = document.querySelector('div#apart');
+  nodo.classList.remove('duck-out');
+  nodo.classList.add('w3-animate-bottom');
+  nodo.style.display = 'block';
+  ajaxPOST('/admin/apartment','location=admin','adminAll','POST');// la variable b es para hacer mejoras en busquedas
+}
+
+//lick id apartments
+function link() {
+
+  let linkId = document.querySelectorAll('p[data-id]')
+  linkId.forEach(element => {
+      if (element.dataset.status) {
+        element.addEventListener('click',linckID)
+      }
+  });
+
+  let divImg = document.querySelectorAll('div#IMG');
+  divImg.forEach(element => {
+      element.children.X.addEventListener('click',upStatusX);
+      element.children.Y.addEventListener('click',upStatusY);
+  });
+
+}
+
+//Up status X
+function upStatusX(element) {
+ let div = element.target.parentNode;
+ div.classList.add('w3-opacity');
+ div.children[3].children[5].removeEventListener('click',linckID);
+ ajaxPOST('/admin/users/'+element.target.dataset.id,'status=false','adminStatus');
+}
+
+//Up status Y
+function upStatusY(element) {
+  let div = element.target.parentNode;
+  div.classList.remove('w3-opacity');
+  div.children[3].children[5].addEventListener('click',linckID);
+  ajaxPOST('/admin/users/'+element.target.dataset.id,'status=true','adminStatus');
+}
+
+//AJAX id apartment
+function linckID(id) {    
+    ajaxPOST('/admin/apartment/'+id.target.attributes[1].nodeValue,'','adminAllId','POST');
+}
+
+//AJAX Up data
+function upData(){
+
+  let textarea = document.querySelectorAll('textarea');
+  let messaje = textarea[0].name+'='+textarea[0].value+'&'+textarea[1].name+'='+textarea[1].value;
+  let inmput = document.querySelectorAll('input');
+  for (let i = 0; i < inmput.length; i++) {
+
+    if (inmput[i].type == 'checkbox') {
+      messaje +='&'+inmput[i].name+'='+inmput[i].checked;
+    } else {
+      messaje +='&'+inmput[i].name+'='+inmput[i].value;
+    }
+  
+  }
+  messaje +='&id='+document.querySelector(`input[type='hidden']`).dataset.id;
+
+  ajaxPOST('/admin/apartment/upData',messaje,'adminAllup','POST');
+}
+
+function look() {
+
+  let x = document.querySelectorAll('div#apart input');
+  let a = ['start','end','city','people','province'];
+  let y = ['startLook','endLook','cityLook','peopleLook','provinceLook'];
+  let b = '';
+  for (let I = 0; I < x.length; I++) {
+
+      for (let i = 0; i < a.length; i++) {
+          
+          if(x[I].name == y[i] && x[I].value != ''){
+              if (a[i] == 'end' || a[i] == 'start') {
+                  b += a[i]+'='+Date.parse(x[I].value)+'&';
+              } else {
+                  b += a[i]+'='+x[I].value+'&';
+              }
+              break;
+          }
+          
+      }
+      
+  }
+
+  if(!b){
+      b += 'action=true&';
+  }
+  b += 'location=admin';
+
+  ajaxPOST('/admin/apartment',b,'adminAll');// la variable b es para hacer mejoras en busquedas
+
+}
+
+//data min from
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+if (!(sessionStorage.getItem("USER"))) {
+  window.location.href = '/locoNoInventes';
+} else {
+    let login = sessionStorage.getItem("USER")
+    login = JSON.parse(login)
+    let input = document.querySelector('input[type=hidden]#id').value
+    if(login._id != input) {
+      console.log('aki');
+        window.location.href = '/locoNoInventes';
+    }
+}
+
+ let input = document.querySelectorAll('input[type=date]');
+ input[0].min = formatDate(new Date());
+ input[1].min = formatDate(new Date());
+
+</script>
+<script src="/js/add-usersUp.js"></script>
+<script src="/js/add-new.js"></script>
+
+</body>
+</html>
